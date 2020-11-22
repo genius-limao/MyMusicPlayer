@@ -1,9 +1,10 @@
-package com.genius.smallmusic;
+package com.genius.smallmusic.ui.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-public class WelcomeActivity extends Activity {
+import com.genius.smallmusic.R;
+
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
