@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/marginSize"
         android:src="@mipmap/ic_launcher" />
 
-    <com.genius.smallmusic.ui.InputView
+    <com.genius.smallmusic.ui.views.InputView
         android:id="@+id/input_phone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/inputViewHeight"
@@ -27,7 +27,7 @@
 
     <View style="@style/line" />
 
-    <com.genius.smallmusic.ui.InputView
+    <com.genius.smallmusic.ui.views.InputView
         android:id="@+id/input_password"
         android:layout_width="match_parent"
         android:layout_height="@dimen/inputViewHeight"
@@ -37,7 +37,7 @@
 
     <View style="@style/line" />
 
-    <com.genius.smallmusic.ui.InputView
+    <com.genius.smallmusic.ui.views.InputView
         android:id="@+id/verify_password"
         android:layout_width="match_parent"
         android:layout_height="@dimen/inputViewHeight"

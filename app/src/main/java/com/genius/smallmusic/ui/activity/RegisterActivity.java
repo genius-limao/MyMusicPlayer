@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.genius.smallmusic.R;
-import com.genius.smallmusic.ui.InputView;
+import com.genius.smallmusic.ui.views.InputView;
 
 public class RegisterActivity extends BaseActivity {
     private InputView inputPhone;

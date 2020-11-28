@@ -1,4 +1,4 @@
-package com.genius.smallmusic.ui;
+package com.genius.smallmusic.ui.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
