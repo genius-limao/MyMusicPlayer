@@ -29,11 +29,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     /**
-     * 点击立即注册
+     * 点击立即注册跳到注册页面
      *
      * @param view
      */
     public void onRegisterClick(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     /**

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
+    <include layout="@layout/nav_bar" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

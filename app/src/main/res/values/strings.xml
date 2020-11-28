@@ -1,11 +1,23 @@
 <resources>
     <string name="app_name">SmallMusic</string>
     <string name="login">登录</string>
+    <string name="register">注册</string>
     <string name="btn_login">登  录</string>
-    <string name="register">立即注册</string>
+    <string name="btn_register">注  册</string>
+    <string name="btn_confirm">确  认</string>
+    <string name="immediately_register">立即注册</string>
     <string name="phone_number">手机号</string>
     <string name="password">密码</string>
+    <string name="input_phone_number">请输入手机号</string>
     <string name="invalid_phone_number">无效的手机号</string>
     <string name="input_password">请输入密码</string>
+    <string name="verify_password">请确认密码</string>
+    <string name="input_old_password">请输入旧密码</string>
+    <string name="input_new_password">请输入新密码</string>
+    <string name="verify_new_password">请确认新密码</string>
+    <string name="personal_center">个人中心</string>
+    <string name="user_name">用户名：%s</string>
+    <string name="change_password">修改密码</string>
+    <string name="log_out">退出登录</string>
 
 </resources>
