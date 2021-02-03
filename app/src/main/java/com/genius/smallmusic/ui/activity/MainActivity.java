@@ -3,6 +3,7 @@ package com.genius.smallmusic.ui.activity;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity {
          */
         rcvList.setLayoutManager(new LinearLayoutManager(this));
         rcvList.setNestedScrollingEnabled(false);
+        rcvList.addItemDecoration(new DividerItemDecoration(this,  DividerItemDecoration.VERTICAL));
         mMusicListAdapter = new MusicListAdapter(this, rcvList);
         rcvList.setAdapter(mMusicListAdapter);
     }

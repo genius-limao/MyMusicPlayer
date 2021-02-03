@@ -1,6 +1,7 @@
 package com.genius.smallmusic.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.genius.smallmusic.R;
+import com.genius.smallmusic.ui.activity.AlbumListActivity;
+import com.genius.smallmusic.ui.activity.PlayMusicActivity;
 
 public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.ViewHolder> {
 
@@ -39,6 +42,14 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
         setRecyclerViewHeight();
         Glide.with(context).load("http://res.lgdsunday.club/poster-1.png")
                 .into(holder.ivIcon);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PlayMusicActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

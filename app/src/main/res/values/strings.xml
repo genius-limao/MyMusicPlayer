@@ -21,5 +21,6 @@
     <string name="log_out">退出登录</string>
     <string name="recommend_playlist">推荐歌单</string>
     <string name="hot_music">最热音乐</string>
+    <string name="album_list">专辑列表</string>
 
 </resources>
