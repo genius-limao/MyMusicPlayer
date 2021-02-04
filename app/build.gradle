@@ -1,6 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+    def PROJECT_NAME = "small-music"
+    def EDITION = "EDITION"
+    flavorDimensions(EDITION)
+    //添加时间戳后AndroidStudio推送的时候会找不到路径，为方便开发添加一个开关，调试的时候可以把开关关闭，发版的时候再把开关打开
+    def timestampEnable = false
+    //升级测试包开关，打升级验证版本时打开，默认关闭
+    def upgradeEnable = false
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -8,16 +15,93 @@ android {
         applicationId "com.genius.smallmusic"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
+        if (upgradeEnable) {
+            versionCode 9999
+            versionName "9.9.99"
+        } else {
+            versionCode 1000
+            versionName "1.0.00"
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //需要添加签名
+//            signingConfig signingConfigs.release
+            zipAlignEnabled true
+            shrinkResources false
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    applicationVariants.all { variant ->
+        def editionName = ""
+        variant.outputs.all { output ->
+            productFlavors.each { productFlavor ->
+                editionName = productFlavor.name
+            }
+            //添加项目/仓库名称
+            def fileNamePrefix = "${PROJECT_NAME}"
+
+            if (editionName.contains("xiaobailang")) {
+                fileNamePrefix += "-bailang"
+            } else {
+                fileNamePrefix += "-${editionName}"
+            }
+
+            if (editionName.contains("xiaobailang")) {
+                fileNamePrefix += "-XBL"
+            } else {
+                fileNamePrefix += "-SM"
+            }
+
+            //添加升级标识
+            if (upgradeEnable) {
+                fileNamePrefix += "-upgrade"
+            }
+
+            //添加功能标识，混淆
+            if (buildType.minifyEnabled) {
+                fileNamePrefix += "-obfuscated"
+            }
+
+            //添加版本号
+            fileNamePrefix += "-${versionName}"
+
+            //添加时间戳
+            if (timestampEnable) {
+                fileNamePrefix += "-${releaseTime()}"
+            }
+
+            //添加签名标识
+            if (buildType.name.contains("debug")) {
+                fileNamePrefix += "-debug"
+            } else {
+                fileNamePrefix += "-release"
+            }
+
+            outputFileName = "${fileNamePrefix}.apk"
+        }
+    }
+
+    productFlavors {
+        smusic {
+            dimension EDITION
+        }
+        lidada {
+            dimension EDITION
+        }
+        xiaobailang {
+            dimension EDITION
+            applicationId "com.xiao.bailang"
+//            versionCode 1000
+//            versionName "xbl_xxx" + "." + "${currentDate()}"
         }
     }
 }
@@ -38,4 +122,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'jp.wasabeef:glide-transformations:4.0.1'
 
+}
+
+def static releaseTime() {
+    return new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("GMT+8"))
+}
+
+def static currentDate() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8"))
 }
