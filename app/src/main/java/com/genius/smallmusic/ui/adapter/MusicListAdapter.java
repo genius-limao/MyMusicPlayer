@@ -13,26 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.genius.smallmusic.R;
-import com.genius.smallmusic.ui.activity.AlbumListActivity;
 import com.genius.smallmusic.ui.activity.PlayMusicActivity;
 
 public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.ViewHolder> {
 
-    private Context context;
+    private Context mContext;
     private View mItemView;
     private RecyclerView mRecyclerView;
     private boolean isCalculationRecyclerView;
 
 
     public MusicListAdapter(Context context, RecyclerView recyclerView) {
-        this.context = context;
+        this.mContext = context;
         mRecyclerView = recyclerView;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        mItemView = LayoutInflater.from(context).inflate(R.layout.item_list_music, parent, false);
+        mItemView = LayoutInflater.from(mContext).inflate(R.layout.item_list_music, parent, false);
         return new ViewHolder(mItemView);
     }
 
@@ -40,16 +39,15 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //使用Glide加载网络图片
         setRecyclerViewHeight();
-        Glide.with(context).load("http://res.lgdsunday.club/poster-1.png")
+        Glide.with(mContext).load("http://res.lgdsunday.club/poster-1.png")
                 .into(holder.ivIcon);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PlayMusicActivity.class);
-                context.startActivity(intent);
+                Intent intent = new Intent(mContext, PlayMusicActivity.class);
+                mContext.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -78,10 +76,13 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        private View itemView;
         private ImageView ivIcon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            this.itemView = itemView;
             ivIcon = itemView.findViewById(R.id.iv_icon);
         }
     }

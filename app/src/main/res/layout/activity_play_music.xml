@@ -12,18 +12,23 @@
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher" />
 
+    <com.genius.smallmusic.ui.views.PlayMusicView
+        android:id="@+id/play_music_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginSize"
         android:onClick="onBackClick"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/fanhui" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginTop="480dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
